@@ -25,6 +25,7 @@ const {
 const domain = url ? new URL(url).hostname.replace("www.", "") : "";
 ---
 
+<template shadowrootmode="open">
 {
   title ? (
     <article
@@ -60,6 +61,7 @@ const domain = url ? new URL(url).hostname.replace("www.", "") : "";
     </div>
   )
 }
+</template>
 
 <style>
   /* Default styles */
