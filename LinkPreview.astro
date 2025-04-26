@@ -27,8 +27,7 @@ const domain = url ? new URL(url).hostname.replace("www.", "") : "";
 
 <astro-static-link-preview>
   <template shadowrootmode="closed">
-    {
-      title ? (
+    {(
         <article
           class:list={[
             "link-preview",
@@ -56,12 +55,7 @@ const domain = url ? new URL(url).hostname.replace("www.", "") : "";
             <img src={image} alt={imageAlt || ""} width="1200" height="630" />
           ) : null}
         </article>
-      ) : (
-        <div class="link-preview link-preview--no-metadata">
-          <a href={url}>{url}</a>
-        </div>
-      )
-    }
+    )}
 
     <style>
       /* Default styles */
