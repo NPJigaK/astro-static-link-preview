@@ -6,9 +6,6 @@ export interface Props {
   description?: string | null | undefined;
   image?: string | null;
   imageAlt?: string | null | undefined;
-  video?: string | null;
-  videoType?: string | undefined;
-  hideMedia?: boolean;
 }
 
 const {
@@ -17,12 +14,10 @@ const {
   description = null,
   image = null,
   imageAlt = null,
-  video = null,
-  videoType = undefined,
-  hideMedia = false,
 } = Astro.props;
 
 const domain = url ? new URL(url).hostname.replace("www.", "") : "";
+const placeholderSvg = `<svg class=\"link-preview__placeholder\" viewBox=\"0 0 1200 630\" width=\"1200\" height=\"630\" role=\"img\" aria-label=\"Image not found\"><rect width=\"1200\" height=\"630\" fill=\"#eee\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-size=\"48\" fill=\"#888\">Image not found</text></svg>`;
 ---
 
 <astro-static-link-preview>
@@ -32,9 +27,7 @@ const domain = url ? new URL(url).hostname.replace("www.", "") : "";
           class:list={[
             "link-preview",
             {
-              "link-preview--has-video": !hideMedia && video && videoType,
-              "link-preview--no-media":
-                hideMedia || !((video && videoType) || image),
+              "link-preview--no-media": !image,
             },
           ]}
         >
@@ -47,13 +40,10 @@ const domain = url ? new URL(url).hostname.replace("www.", "") : "";
             </header>
             <small class="link-preview__description">{description}</small>
           </div>
-          {hideMedia ? null : video && videoType ? (
-            <video controls preload="metadata" width="1200" height="630">
-              <source src={video} type={videoType} />
-            </video>
-          ) : image ? (
+
+          {image ? (
             <img src={image} alt={imageAlt || ""} width="1200" height="630" />
-          ) : null}
+          ) : <Fragment set:html={placeholderSvg} />}
         </article>
     )}
 
@@ -93,13 +83,13 @@ const domain = url ? new URL(url).hostname.replace("www.", "") : "";
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      .link-preview:not(.link-preview--has-video) a::after {
+      .link-preview:not(.link-preview--no-media) a::after {
         content: "";
         position: absolute;
         inset: 0;
       }
       .link-preview img,
-      .link-preview video {
+      .link-preview svg {
         aspect-ratio: 1200 / 630;
         width: 100%;
         height: auto;
