@@ -4,7 +4,8 @@
 [![npm downloads](https://img.shields.io/npm/dt/astro-static-link-preview.svg)](https://www.npmjs.com/package/astro-static-link-preview) 
 [![license](https://img.shields.io/npm/l/astro-static-link-preview.svg)](https://github.com/NPJigaK/astro-static-link-preview/blob/main/LICENSE)  
 
-A **zero-dependency** Astro component that renders social-style link-preview cards *statically* at build time.  
+**A zero-dependency** Astro component that turns any URL into a social-style link-preview card entirely at build time.
+**No external libraries**, **no runtime JavaScript**, and **no network calls** during generation—just compact, tree-shakable HTML + CSS.
 Choose from six built-in themes (`default`, `small`, `facebook`, `x`, `linkedin`, `discord`) or roll your own with CSS variables.
 
 ---
@@ -15,22 +16,20 @@ Choose from six built-in themes (`default`, `small`, `facebook`, `x`, `linkedin`
 |---|---|
 | **Static rendering** | No client-side fetches — perfect for blogs, docs & MDX content. |
 | **Six ready-made themes** | Recreate the look of Facebook, X (Twitter), LinkedIn, Discord, etc. |
-| **Automatic favicon** | `default` & `small` use Google Favicon API for the publisher logo. |
-| **Graceful fall-back** | Missing image? A built-in SVG placeholder scales to any card size. |
 | **Type-safe** | Exports an interface for all props. |
-| **Pure CSS** | No external style sheets or JS bundles. |
+| **A zero-dependency and Pure CSS** | No external style sheets or JS bundles. |
 ---
 
 ## install
 ```bash
 # choose one
-npm install astro-static-link-preview
+npm i astro-static-link-preview
 yarn add astro-static-link-preview
 pnpm add astro-static-link-preview
 ```
 
 ## Usage
-### import
+### 1. Import
 `.astro`
 ```astro
 ---
@@ -43,7 +42,7 @@ import { LinkPreview } from "astro-static-link-preview";
 import { LinkPreview } from "astro-static-link-preview";
 ```
 
-### Drop in a component
+### 2. Drop in a component
 ```mdx
 <LinkPreview
   url="https://astro.build"
@@ -116,10 +115,10 @@ Prop | Type | Default | Description
 |---|---|---|---|
 url | string (required) | – | Absolute URL to link to.
 title | string (required) | "" | – | Heading text (can contain markup).
-description | string | "" | Optional descriptive text (truncated to 3 lines except on small).
-image | string | null | image / screenshot URL. When omitted, an SVG placeholder is shown.
+description | string | "" | descriptive text (`default`, `facebook`,  `discord`).
+image | string | null | image / screenshot URL. When omitted, an SVG placeholder(Not Found Image) is shown.
 imageAlt | string | "" | Alt text for the image.
 theme | string | "default" | Card style. (`default`, `small`, `facebook`, `x`, `linkedin`, `discord`)
 
 ## License
-MIT
+[MIT](LICENSE)
