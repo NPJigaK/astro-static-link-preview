@@ -1,6 +1,6 @@
 {
     "name": "astro-static-link-preview",
-    "version": "1.0.0-beta.1",
+    "version": "1.0.0",
     "description": "Astro component for fully static link previews—manually supply title, description, image, imageAlt, url, video, and videoType",
     "type": "module",
     "exports": {
