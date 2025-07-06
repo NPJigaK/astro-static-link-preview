@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><title>linkedin Example</title></head> <body> <a href="/">Back</a> <astro-static-link-preview> <template shadowrootmode="closed"> <a href="https://astro.build" target="_blank" rel="nofollow noopener noreferrer" class="lp lp--linkedin" title="astro.build"> <div class="lp__imgwrap"> <img src="https://astro.build/og/astro.jpg" alt width="1200" height="630"> </div>  <div class="lp__body"> <small class="lp__domain">astro.build</small> <h4 class="lp__title">Astro Homepage</h4> <p class="lp__desc">Astro builds fast content sites, powerful web applications, dynamic server APIs, and everything in-between.</p>  </div> </a> <style>
+      :host,
+      .lp,
+      .lp * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      a.lp {
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+      }
+
+      .lp {
+        --lp-w: 100%;
+        --lp-radius: 0;
+        --lp-border: 0 solid transparent;
+        --lp-bg: #fff;
+        --lp-padding: 0;
+        --lp-font: system-ui, Helvetica, Arial, sans-serif;
+        --lp-title-size: 16px;
+        --lp-desc-size: 14px;
+        --lp-domain-size: 12px;
+
+        position: relative;
+        width: var(--lp-w);
+        max-width: 100%;
+        background: var(--lp-bg);
+        border: var(--lp-border);
+        border-radius: var(--lp-radius);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        font-family: var(--lp-font);
+      }
+      .lp__imgwrap {
+        width: 100%;
+      }
+      .lp__imgwrap svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .lp__body {
+        padding: var(--lp-padding);
+        display: flex;
+        flex-direction: column;
+      }
+      .lp__title {
+        font-size: var(--lp-title-size);
+        font-weight: 600;
+      }
+      .lp__domain {
+        font-size: var(--lp-domain-size);
+        opacity: 0.6;
+        text-transform: uppercase;
+      }
+      .lp__desc {
+        font-size: var(--lp-desc-size);
+        line-height: 1.4;
+        margin-top: 4px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+      }
+      .lp__domain--overlay {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 0.5rem;
+        font-size: 10px;
+        padding: 2px 4px;
+        background: #000a;
+        color: #fff;
+        border-radius: 2px;
+        text-transform: lowercase;
+      }
+
+      /* publisher / favicon (for default・small) */
+      .lp__source {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-top: auto;
+        font-size: 12px;
+      }
+      .lp__favicon {
+        width: 0.75rem;
+        height: 0.75rem;
+      }
+      .lp__publisher {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* ===== default ===== */
+      .lp--default {
+        --lp-w: 30rem;
+        --lp-radius: 6px;
+        --lp-border: 1px solid #d0d0d0;
+        --lp-bg: #fff;
+        --lp-padding: 12px;
+        flex-direction: row-reverse;
+      }
+      .lp--default .lp__imgwrap {
+        width: 8rem;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+      }
+      .lp--default .lp__body {
+        flex: 1;
+      }
+      .lp--default .lp__favicon {
+        width: 0.75rem;
+        height: 0.75rem;
+      }
+
+      /* ===== small ===== */
+      .lp--small {
+        --lp-w: 24rem;
+        --lp-radius: 6px;
+        --lp-border: 1px solid #d0d0d0;
+        --lp-bg: #fff;
+        --lp-padding: 8px 12px;
+        display: flex;
+        flex-direction: row;
+      }
+      .lp--small .lp__imgwrap {
+        width: 3rem;
+        height: 3rem;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+      }
+      .lp--small .lp__domain,
+      .lp--small .lp__desc {
+        display: none;
+      }
+      .lp--small .lp__body {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        padding: var(--lp-padding);
+        flex: 1 1 auto;
+      }
+      .lp--small .lp__title {
+        flex: 1 1 auto;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1;
+      }
+      .lp--small .lp__source {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        height: 100%;
+      }
+      .lp--small .lp__favicon {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+      .lp--small .lp__publisher {
+        display: none;
+      }
+
+      /* ===== Facebook ===== */
+      .lp--facebook {
+        --lp-w: 524px;
+        --lp-radius: 0;
+        --lp-border: 1px solid #dadde1;
+        --lp-bg: #f2f3f5;
+        --lp-padding: 10px 12px;
+      }
+      .lp--facebook .lp__body {
+        background: #f2f3f5;
+      }
+      .lp--facebook .lp__domain {
+        color: #606770;
+      }
+      .lp--facebook .lp__title {
+        color: #1d2129;
+        font-size: 16px;
+        margin-top: 3px;
+      }
+      .lp--facebook .lp__desc {
+        color: #606770;
+        font-size: 14px;
+        margin-top: 3px;
+        white-space: nowrap;
+        -webkit-line-clamp: 1;
+      }
+
+      /* ===== X ===== */
+      .lp--x {
+        --lp-w: 438px;
+        --lp-radius: 0.85714em;
+        --lp-border: 1px solid #e1e8ed;
+        --lp-bg: #fff;
+        --lp-padding: 0;
+        position: relative;
+      }
+      .lp--x .lp__body {
+        display: none;
+      }
+      .lp--x .lp__domain--overlay {
+        display: block;
+      }
+
+      /* ===== LinkedIn ===== */
+      .lp--linkedin {
+        --lp-w: 520px;
+        --lp-radius: 2px;
+        --lp-border: 0 solid transparent;
+        --lp-bg: #fff;
+        --lp-padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .lp--linkedin .lp__title {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .lp--linkedin .lp__domain {
+        color: #0009;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+      .lp--linkedin .lp__desc {
+        display: none;
+      }
+
+      /* ===== Discord ===== */
+      .lp--discord {
+        --lp-w: 432px;
+        --lp-radius: 4px;
+        --lp-border: 4px solid #202225;
+        --lp-bg: #2f3136;
+        --lp-padding: 8px 16px 16px 12px;
+        color: #fff;
+      }
+      .lp--discord .lp__title {
+        color: #00b0f4;
+        font-size: 1rem;
+        margin-top: 8px;
+      }
+      .lp--discord .lp__domain {
+        font-size: 12px;
+      }
+      .lp--discord .lp__desc {
+        color: #dcddde;
+        font-size: 14px;
+        margin-top: 8px;
+        white-space: pre-line;
+        -webkit-line-clamp: unset;
+      }
+      .lp--discord .lp__imgwrap {
+        margin-top: 16px;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+    </style> </template> </astro-static-link-preview> </body></html>

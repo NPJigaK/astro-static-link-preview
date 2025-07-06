@@ -1,0 +1,14 @@
+---
+import { LinkPreview } from 'astro-static-link-preview';
+const theme = 'discord';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>discord Example</title>
+  </head>
+  <body>
+    <a href="/">Back</a>
+    <LinkPreview url="https://astro.build" title="Astro Homepage" description="Astro builds fast content sites, powerful web applications, dynamic server APIs, and everything in-between." image="https://astro.build/og/astro.jpg" theme={theme} />
+  </body>
+</html>
