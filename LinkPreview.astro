@@ -48,8 +48,10 @@ const placeholderSvg = `<svg class="lp__placeholder" viewBox="0 0 1200 630" role
 
       {theme === "x" && <div class="lp__domain--overlay">{domain}</div>}
       <div class="lp__body">
-        {theme !== "x" && <small class="lp__domain">{domain}</small>}
-        <h4 class="lp__title">{title}</h4>
+        {theme !== "x" && theme !== "default" && (
+          <small class="lp__domain">{domain}</small>
+        )}
+        <h4 class="lp__title">{theme === "default" ? domain : title}</h4>
         {description && <p class="lp__desc">{description}</p>}
 
         {
