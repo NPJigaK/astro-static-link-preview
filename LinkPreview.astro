@@ -68,13 +68,12 @@ const placeholderSvg = `<svg class="lp__placeholder" viewBox="0 0 1200 630" role
                   decoding="async"
                 />
               )}
-              <span class="lp__publisher">{publisher}</span>
+              <span class="lp__publisher">
+                {theme === "default" ? domain : publisher}
+              </span>
             </div>
           )
         }
-        {theme === "default" && (
-          <small class="lp__domain lp__domain--bottom">{domain}</small>
-        )}
       </div>
     </a>
 
@@ -204,10 +203,6 @@ const placeholderSvg = `<svg class="lp__placeholder" viewBox="0 0 1200 630" role
       }
       .lp--default .lp__title {
         display: none;
-      }
-      .lp--default .lp__domain--bottom {
-        margin-top: 0.25rem;
-        display: block;
       }
 
       /* ===== small ===== */
