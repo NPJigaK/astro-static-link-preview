@@ -48,8 +48,10 @@ const placeholderSvg = `<svg class="lp__placeholder" viewBox="0 0 1200 630" role
 
       {theme === "x" && <div class="lp__domain--overlay">{domain}</div>}
       <div class="lp__body">
-        {theme !== "x" && <small class="lp__domain">{domain}</small>}
-        <h4 class="lp__title">{theme === "default" ? domain : title}</h4>
+        {theme !== "x" && theme !== "default" && (
+          <small class="lp__domain">{domain}</small>
+        )}
+        {theme !== "default" && <h4 class="lp__title">{title}</h4>}
         {description && <p class="lp__desc">{description}</p>}
 
         {
@@ -66,7 +68,9 @@ const placeholderSvg = `<svg class="lp__placeholder" viewBox="0 0 1200 630" role
                   decoding="async"
                 />
               )}
-              <span class="lp__publisher">{publisher}</span>
+              <span class="lp__publisher">
+                {theme === "default" ? domain : publisher}
+              </span>
             </div>
           )
         }
@@ -197,7 +201,7 @@ const placeholderSvg = `<svg class="lp__placeholder" viewBox="0 0 1200 630" role
         width: 0.75rem;
         height: 0.75rem;
       }
-      .lp--default .lp__domain {
+      .lp--default .lp__title {
         display: none;
       }
 
